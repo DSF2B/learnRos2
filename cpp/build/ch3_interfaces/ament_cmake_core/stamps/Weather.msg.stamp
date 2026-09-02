@@ -1,0 +1,4 @@
+# 天气消息：字段类型只支持 ROS 内置类型或其他消息类型
+float64 temperature   # 摄氏度
+float64 humidity      # 相对湿度 0~1
+string  condition     # 天气描述，如 sunny / rainy

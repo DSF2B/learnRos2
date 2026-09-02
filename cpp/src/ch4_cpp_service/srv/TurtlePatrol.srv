@@ -1,0 +1,8 @@
+# 巡逻请求：让海龟按给定速度运动一段时间
+float64 linear_x    # 线速度 (m/s)
+float64 angular_z   # 角速度 (rad/s)
+float64 duration    # 持续时长 (s)
+---
+# 应答
+bool   success
+string message

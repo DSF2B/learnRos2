@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-ea4490692ea477ddb2b3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ch2_node",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ch2_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch2_node-d0b96840286b2eb4aa97.json",
+					"name" : "ch2_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch2_node_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch2_node_uninstall-35e680b9b37a07b8c6d0.json",
+					"name" : "ch2_node_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch2_oop_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch2_oop_node-33caf489158b7053b5cf.json",
+					"name" : "ch2_oop_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-e1ae6a7cd86fc9ce438c.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zilu/myProgramFile/learnRos2/cpp/build/ch2_node",
+		"source" : "/home/zilu/myProgramFile/learnRos2/cpp/src/ch2_node"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

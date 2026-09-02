@@ -1,0 +1,9 @@
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/uninstall.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/ch6_robot_uninstall.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/test.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/edit_cache.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/rebuild_cache.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/list_install_components.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/install.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/install/local.dir
+/home/zilu/myProgramFile/learnRos2/cpp/build/ch6_robot/CMakeFiles/install/strip.dir

@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<!--
+  mini_car：两轮差速小车模型
+  Xacro 三大件：property（常量）、macro（可复用块）、include（拆分文件）
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mini_car">
+
+  <!-- ============ 常量：改一处，全车生效 ============ -->
+  <xacro:property name="wheel_radius" value="0.035"/>
+  <xacro:property name="wheel_width" value="0.02"/>
+  <xacro:property name="wheel_separation" value="0.24"/>
+  <xacro:property name="base_length" value="0.30"/>
+  <xacro:property name="base_width" value="0.20"/>
+  <xacro:property name="base_height" value="0.10"/>
+
+  <!-- 材质 -->
+  <material name="black"><color rgba="0.1 0.1 0.1 1"/></material>
+  <material name="blue"><color rgba="0 0.4 1 1"/></material>
+  <material name="red"><color rgba="1 0.2 0.2 1"/></material>
+  <material name="gray"><color rgba="0.6 0.6 0.6 1"/></material>
+
+  <!-- 惯性宏：实心圆柱的惯性张量公式（绕柱轴 izz = m*r²/2） -->
+  <xacro:macro name="cylinder_inertia" params="m r h">
+    <inertial>
+      <mass value="${m}"/>
+      <inertia ixx="${m*(3*r*r+h*h)/12}" ixy="0" ixz="0"
+               iyy="${m*(3*r*r+h*h)/12}" iyz="0"
+               izz="${m*r*r/2}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- 轮子宏：左/右轮结构相同，只差安装位置与方向 -->
+  <xacro:macro name="wheel" params="prefix x_reflect">
+    <link name="${prefix}_wheel">
+      <visual>
+        <!-- 圆柱默认轴沿 Z，轮子轴应沿 Y，故绕 X 转 90° -->
+        <geometry><cylinder radius="${wheel_radius}" length="${wheel_width}"/></geometry>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <material name="black"/>
+      </visual>
+      <collision>
+        <geometry><cylinder radius="${wheel_radius}" length="${wheel_width}"/></geometry>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+      </collision>
+      <xacro:cylinder_inertia m="0.1" r="${wheel_radius}" h="${wheel_width}"/>
+    </link>
+
+    <!-- continuous：轮子可无限旋转 -->
+    <joint name="${prefix}_wheel_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${prefix}_wheel"/>
+      <origin xyz="${x_reflect * wheel_separation/2} 0 ${-base_height/2 + wheel_radius}"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="10" velocity="10"/>
+    </joint>
+
+    <!-- 传动：把执行器(电机)速度映射到关节，ros2_control 读取 -->
+    <transmission name="${prefix}_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_wheel_joint">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}_wheel_motor">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <!-- ============ 车身 ============ -->
+  <link name="base_link">
+    <visual>
+      <geometry><box size="${base_length} ${base_width} ${base_height}"/></geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry><box size="${base_length} ${base_width} ${base_height}"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.006" ixy="0" ixz="0" iyy="0.008" iyz="0" izz="0.012"/>
+    </inertial>
+  </link>
+
+  <!-- 两个驱动轮 -->
+  <xacro:wheel prefix="left" x_reflect="1"/>
+  <xacro:wheel prefix="right" x_reflect="-1"/>
+
+  <!-- 万向轮（车头支撑，fixed 关节） -->
+  <link name="caster_wheel">
+    <visual>
+      <geometry><sphere radius="0.015"/></geometry>
+      <material name="gray"/>
+    </visual>
+    <collision>
+      <geometry><sphere radius="0.015"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="caster_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_wheel"/>
+    <origin xyz="${base_length/2 - 0.05} 0 ${-base_height/2}"/>
+  </joint>
+
+  <!-- ============ 激光雷达 ============ -->
+  <link name="lidar_link">
+    <visual>
+      <geometry><cylinder radius="0.04" length="0.03"/></geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry><cylinder radius="0.04" length="0.03"/></geometry>
+    </collision>
+    <xacro:cylinder_inertia m="0.15" r="0.04" h="0.03"/>
+  </link>
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+    <origin xyz="0.05 0 ${base_height/2 + 0.03}"/>
+  </joint>
+  <gazebo reference="lidar_link">
+    <sensor type="ray" name="lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-${pi}</min_angle>
+            <max_angle>${pi}</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>12.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="gazebo_ros_lidar" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <namespace>/mini_car</namespace>
+          <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>lidar_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- ============ IMU ============ -->
+  <link name="imu_link">
+    <visual>
+      <geometry><box size="0.02 0.02 0.01"/></geometry>
+      <material name="gray"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.02 0.02 0.01"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 ${base_height/2}"/>
+  </joint>
+  <gazebo reference="imu_link">
+    <sensor type="imu" name="imu">
+      <plugin name="gazebo_ros_imu" filename="libgazebo_ros_imu_sensor.so">
+        <ros>
+          <namespace>/mini_car</namespace>
+          <remapping>~/out:=imu</remapping>
+        </ros>
+        <initial_orientation_as_reference>false</initial_orientation_as_reference>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- ============ 深度相机 ============ -->
+  <link name="camera_link">
+    <visual>
+      <geometry><box size="0.03 0.06 0.02"/></geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.06 0.02"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.02"/>
+      <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <!-- 装在车头，向下俯视 10° -->
+    <origin xyz="${base_length/2 - 0.02} 0 ${base_height/2 + 0.02}" rpy="0 0.18 0"/>
+  </joint>
+  <gazebo reference="camera_link">
+    <sensor type="depth" name="camera">
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <ros>
+          <namespace>/mini_car</namespace>
+          <remapping>image_raw:=image_raw</remapping>
+          <remapping>depth/image_raw:=depth/image_raw</remapping>
+          <remapping>points:=points</remapping>
+        </ros>
+        <camera_name>camera</camera_name>
+        <frame_name>camera_link</frame_name>
+        <update_rate>10</update_rate>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- ============ ros2_control：控制器与仿真的桥梁 ============ -->
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="left_wheel_joint">
+      <command_interface name="velocity">
+        <state_interface name="velocity"/>
+        <state_interface name="position"/>
+      </command_interface>
+    </joint>
+    <joint name="right_wheel_joint">
+      <command_interface name="velocity">
+        <state_interface name="velocity"/>
+        <state_interface name="position"/>
+      </command_interface>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <!-- $(find) 由 gazebo_ros 的 launch 解析，指向 install 后的 share 目录 -->
+      <parameters>$(find ch6_robot)/config/diff_drive.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

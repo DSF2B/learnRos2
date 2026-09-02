@@ -1,0 +1,4 @@
+source;share/ch2_node/local_setup.bash
+source;share/ch2_node/local_setup.dsv
+source;share/ch2_node/local_setup.sh
+source;share/ch2_node/local_setup.zsh

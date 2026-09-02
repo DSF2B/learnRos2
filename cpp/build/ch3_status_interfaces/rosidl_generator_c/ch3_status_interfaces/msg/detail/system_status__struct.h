@@ -1,0 +1,62 @@
+﻿// NOLINT: This file starts with a BOM since it contain non-ASCII characters
+// generated from rosidl_generator_c/resource/idl__struct.h.em
+// with input from ch3_status_interfaces:msg/SystemStatus.idl
+// generated code does not contain a copyright notice
+
+#ifndef CH3_STATUS_INTERFACES__MSG__DETAIL__SYSTEM_STATUS__STRUCT_H_
+#define CH3_STATUS_INTERFACES__MSG__DETAIL__SYSTEM_STATUS__STRUCT_H_
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+
+
+// Constants defined in the message
+
+// Include directives for member types
+// Member 'stamp'
+#include "builtin_interfaces/msg/detail/time__struct.h"
+// Member 'host_name'
+#include "rosidl_runtime_c/string.h"
+
+/// Struct defined in msg/SystemStatus in the package ch3_status_interfaces.
+typedef struct ch3_status_interfaces__msg__SystemStatus
+{
+  /// 记录时间戳
+  builtin_interfaces__msg__Time stamp;
+  /// 主机名称
+  rosidl_runtime_c__String host_name;
+  /// CPU使用率
+  float cpu_percent;
+  /// 内存使用率
+  float memory_percent;
+  /// 内存总大小
+  float memory_total;
+  /// 内存可用大小
+  float memory_available;
+  /// 网络发送数据总量 MB
+  double net_sent;
+  /// 网络接收数据总量 MB
+  double net_recv;
+} ch3_status_interfaces__msg__SystemStatus;
+
+// Struct for a sequence of ch3_status_interfaces__msg__SystemStatus.
+typedef struct ch3_status_interfaces__msg__SystemStatus__Sequence
+{
+  ch3_status_interfaces__msg__SystemStatus * data;
+  /// The number of valid items in data
+  size_t size;
+  /// The number of allocated items in data
+  size_t capacity;
+} ch3_status_interfaces__msg__SystemStatus__Sequence;
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // CH3_STATUS_INTERFACES__MSG__DETAIL__SYSTEM_STATUS__STRUCT_H_

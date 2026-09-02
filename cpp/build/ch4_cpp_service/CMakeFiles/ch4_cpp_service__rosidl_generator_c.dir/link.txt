@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -shared -Wl,-soname,libch4_cpp_service__rosidl_generator_c.so -o libch4_cpp_service__rosidl_generator_c.so CMakeFiles/ch4_cpp_service__rosidl_generator_c.dir/rosidl_generator_c/ch4_cpp_service/srv/detail/turtle_patrol__functions.c.o  -Wl,-rpath,/opt/ros/humble/lib: /opt/ros/humble/lib/librosidl_runtime_c.so /opt/ros/humble/lib/librcutils.so -ldl -latomic 

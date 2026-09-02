@@ -1,0 +1,2 @@
+composition::TalkerComponent;lib/libtalker_component.so
+composition::ListenerComponent;lib/liblistener_component.so

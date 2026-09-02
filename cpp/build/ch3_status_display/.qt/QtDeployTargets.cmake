@@ -1,0 +1,4 @@
+set(__QT_DEPLOY_TARGET_hello_qt_FILE /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_status_display/hello_qt)
+set(__QT_DEPLOY_TARGET_hello_qt_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_sys_status_display_FILE /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_status_display/sys_status_display)
+set(__QT_DEPLOY_TARGET_sys_status_display_TYPE EXECUTABLE)

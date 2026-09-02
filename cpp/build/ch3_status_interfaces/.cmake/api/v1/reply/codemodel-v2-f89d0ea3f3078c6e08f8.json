@@ -1,0 +1,258 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-0285dc32d985e3ca602e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "ch3_status_interfaces__py",
+					"jsonFile" : "directory-ch3_status_interfaces__py-cb579fe5e1c71d32f5c1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_status_interfaces/ch3_status_interfaces__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "ch3_status_interfaces__rs",
+					"jsonFile" : "directory-ch3_status_interfaces__rs-be9c8b1b804f868bdfb0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_status_interfaces/ch3_status_interfaces__rs",
+					"targetIndexes" : 
+					[
+						16
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "ch3_status_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_ch3_status_interfaces_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_ch3_status_interfaces_egg-9df8e35200a7dbe7c4a9.json",
+					"name" : "ament_cmake_python_build_ch3_status_interfaces_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_ch3_status_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_ch3_status_interfaces-b70db9ddd0b13c1f9ea4.json",
+					"name" : "ament_cmake_python_copy_ch3_status_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces-a2398b297faf61ecf35d.json",
+					"name" : "ch3_status_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__cpp-684a7aaba9105779fbee.json",
+					"name" : "ch3_status_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ch3_status_interfaces__py::@77089a180e5299f45ce4",
+					"jsonFile" : "target-ch3_status_interfaces__py-581e9dde4c5b398f255c.json",
+					"name" : "ch3_status_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_generator_c-0d2dcd32d203278542cf.json",
+					"name" : "ch3_status_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_generator_py-eb4d7a68e0ba23fc8cf7.json",
+					"name" : "ch3_status_interfaces__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_c-b1cd4d6ec22d7c7c78f9.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_c__pyext-a7ebeee30f4ad43bc8ac.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_cpp-64506dccc5849d6980ed.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_fastrtps_c-19d8299addff8f0356fd.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_fastrtps_c__pyext-d96a6d84e71bad0b2030.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_fastrtps_cpp-0c3fb6e0a49fe5691bf5.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_introspection_c-88c946004ef3838c9b83.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_introspection_c__pyext-96dfb494433b8fdcfb46.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces__rosidl_typesupport_introspection_cpp-3f35a4365eeeb9306adf.json",
+					"name" : "ch3_status_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ch3_status_interfaces__rs::@ff5cbce511317e29d886",
+					"jsonFile" : "target-ch3_status_interfaces__rs-96b2808d60d1ebad2143.json",
+					"name" : "ch3_status_interfaces__rs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ch3_status_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ch3_status_interfaces_uninstall-6db5497452a21fa6d04a.json",
+					"name" : "ch3_status_interfaces_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-946c4c76eef85b44a2c6.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_status_interfaces",
+		"source" : "/home/zilu/myProgramFile/learnRos2/cpp/src/ch3_status_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

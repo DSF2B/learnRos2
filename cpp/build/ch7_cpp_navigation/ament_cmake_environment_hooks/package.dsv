@@ -1,0 +1,4 @@
+source;share/ch7_cpp_navigation/local_setup.bash
+source;share/ch7_cpp_navigation/local_setup.dsv
+source;share/ch7_cpp_navigation/local_setup.sh
+source;share/ch7_cpp_navigation/local_setup.zsh

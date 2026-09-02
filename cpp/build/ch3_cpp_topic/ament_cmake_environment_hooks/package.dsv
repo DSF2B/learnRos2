@@ -1,0 +1,4 @@
+source;share/ch3_cpp_topic/local_setup.bash
+source;share/ch3_cpp_topic/local_setup.dsv
+source;share/ch3_cpp_topic/local_setup.sh
+source;share/ch3_cpp_topic/local_setup.zsh
