@@ -1,7 +1,0 @@
-<!-- pluginlib 插件清单：library path 是编译出的 .so 名字（去掉 lib 前缀和 .so 后缀） -->
-<library path="straight_line_planner">
-  <class type="ch8_custom_planner::StraightLinePlanner"
-         base_class_type="nav2_core::GlobalPlanner">
-    <description>两点直线规划器：教学演示插件机制，不做避障</description>
-  </class>
-</library>

@@ -1,6 +1,0 @@
-{
-  "package_name": "ch4_cpp_service",
-  "non_idl_tuples": [
-    "/home/zilu/myProgramFile/learnRos2/cpp/src/ch4_cpp_service:srv/TurtlePatrol.srv"
-  ]
-}

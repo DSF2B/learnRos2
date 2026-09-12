@@ -1,7 +1,0 @@
-/home/zilu/myProgramFile/learnRos2/cpp/src/ch3_status_display/src/hello_qt.cpp: In function ‘int main(int, char**)’:
-/home/zilu/myProgramFile/learnRos2/cpp/src/ch3_status_display/src/hello_qt.cpp:12:7: error: base operand of ‘->’ has non-pointer type ‘QApplication’
-   12 |    app->exec();
-      |       ^~
-gmake[2]: *** [CMakeFiles/hello_qt.dir/build.make:76: CMakeFiles/hello_qt.dir/src/hello_qt.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/hello_qt.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

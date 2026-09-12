@@ -2,5 +2,6 @@
     "python.analysis.extraPaths": [
         "/opt/ros/humble/local/lib/python3.10/dist-packages",
         "${workspaceFolder}/cpp/install/*/local/lib/python3.10/dist-packages"
-    ]
+    ],
+    "cmake.sourceDirectory": "/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_status_interfaces/ch3_status_interfaces__py"
 }

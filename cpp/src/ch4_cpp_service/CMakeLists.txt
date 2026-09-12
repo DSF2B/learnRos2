@@ -5,31 +5,18 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+# find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ch4_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
+find_package(turtlesim REQUIRED)
 
-# 由 srv/TurtlePatrol.srv 生成 C++/Python 代码
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/TurtlePatrol.srv"
-)
+add_executable(turtle_control src/turtle_control.cpp)
+ament_target_dependencies(turtle_control rclcpp geometry_msgs turtlesim ch4_interfaces)
 
-add_executable(patrol_server src/patrol_server.cpp)
 add_executable(patrol_client src/patrol_client.cpp)
-
-# 链接本包自己生成的 srv 代码（官方推荐写法）
-rosidl_get_typesupport_target(cpp_typesupport_target
-  ${PROJECT_NAME} "rosidl_typesupport_cpp")
-
-foreach(target patrol_server patrol_client)
-  ament_target_dependencies(${target} rclcpp geometry_msgs)
-  target_link_libraries(${target} "${cpp_typesupport_target}")
-endforeach()
-
-install(TARGETS patrol_server patrol_client
-  DESTINATION lib/${PROJECT_NAME})
-
+ament_target_dependencies(patrol_client rclcpp ch4_interfaces)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -41,5 +28,8 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+install(TARGETS turtle_control DESTINATION lib/${PROJECT_NAME})
+install(TARGETS patrol_client DESTINATION lib/${PROJECT_NAME})
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 
 ament_package()

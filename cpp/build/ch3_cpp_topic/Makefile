@@ -198,71 +198,6 @@ ch3_cpp_topic_uninstall/fast:
 .PHONY : ch3_cpp_topic_uninstall/fast
 
 #=============================================================================
-# Target rules for targets named talker
-
-# Build rule for target.
-talker: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 talker
-.PHONY : talker
-
-# fast build rule for target.
-talker/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/talker.dir/build.make CMakeFiles/talker.dir/build
-.PHONY : talker/fast
-
-#=============================================================================
-# Target rules for targets named listener
-
-# Build rule for target.
-listener: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 listener
-.PHONY : listener
-
-# fast build rule for target.
-listener/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/build
-.PHONY : listener/fast
-
-#=============================================================================
-# Target rules for targets named weather_pub
-
-# Build rule for target.
-weather_pub: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 weather_pub
-.PHONY : weather_pub
-
-# fast build rule for target.
-weather_pub/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_pub.dir/build.make CMakeFiles/weather_pub.dir/build
-.PHONY : weather_pub/fast
-
-#=============================================================================
-# Target rules for targets named weather_sub
-
-# Build rule for target.
-weather_sub: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 weather_sub
-.PHONY : weather_sub
-
-# fast build rule for target.
-weather_sub/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_sub.dir/build.make CMakeFiles/weather_sub.dir/build
-.PHONY : weather_sub/fast
-
-#=============================================================================
-# Target rules for targets named turtle_circle
-
-# Build rule for target.
-turtle_circle: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 turtle_circle
-.PHONY : turtle_circle
-
-# fast build rule for target.
-turtle_circle/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_circle.dir/build.make CMakeFiles/turtle_circle.dir/build
-.PHONY : turtle_circle/fast
-
-#=============================================================================
 # Target rules for targets named turtle_control
 
 # Build rule for target.
@@ -274,78 +209,6 @@ turtle_control: cmake_check_build_system
 turtle_control/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_control.dir/build.make CMakeFiles/turtle_control.dir/build
 .PHONY : turtle_control/fast
-
-src/listener.o: src/listener.cpp.o
-.PHONY : src/listener.o
-
-# target to build an object file
-src/listener.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/src/listener.cpp.o
-.PHONY : src/listener.cpp.o
-
-src/listener.i: src/listener.cpp.i
-.PHONY : src/listener.i
-
-# target to preprocess a source file
-src/listener.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/src/listener.cpp.i
-.PHONY : src/listener.cpp.i
-
-src/listener.s: src/listener.cpp.s
-.PHONY : src/listener.s
-
-# target to generate assembly for a file
-src/listener.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/src/listener.cpp.s
-.PHONY : src/listener.cpp.s
-
-src/talker.o: src/talker.cpp.o
-.PHONY : src/talker.o
-
-# target to build an object file
-src/talker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/talker.dir/build.make CMakeFiles/talker.dir/src/talker.cpp.o
-.PHONY : src/talker.cpp.o
-
-src/talker.i: src/talker.cpp.i
-.PHONY : src/talker.i
-
-# target to preprocess a source file
-src/talker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/talker.dir/build.make CMakeFiles/talker.dir/src/talker.cpp.i
-.PHONY : src/talker.cpp.i
-
-src/talker.s: src/talker.cpp.s
-.PHONY : src/talker.s
-
-# target to generate assembly for a file
-src/talker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/talker.dir/build.make CMakeFiles/talker.dir/src/talker.cpp.s
-.PHONY : src/talker.cpp.s
-
-src/turtle_circle.o: src/turtle_circle.cpp.o
-.PHONY : src/turtle_circle.o
-
-# target to build an object file
-src/turtle_circle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_circle.dir/build.make CMakeFiles/turtle_circle.dir/src/turtle_circle.cpp.o
-.PHONY : src/turtle_circle.cpp.o
-
-src/turtle_circle.i: src/turtle_circle.cpp.i
-.PHONY : src/turtle_circle.i
-
-# target to preprocess a source file
-src/turtle_circle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_circle.dir/build.make CMakeFiles/turtle_circle.dir/src/turtle_circle.cpp.i
-.PHONY : src/turtle_circle.cpp.i
-
-src/turtle_circle.s: src/turtle_circle.cpp.s
-.PHONY : src/turtle_circle.s
-
-# target to generate assembly for a file
-src/turtle_circle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_circle.dir/build.make CMakeFiles/turtle_circle.dir/src/turtle_circle.cpp.s
-.PHONY : src/turtle_circle.cpp.s
 
 src/turtle_control.o: src/turtle_control.cpp.o
 .PHONY : src/turtle_control.o
@@ -371,54 +234,6 @@ src/turtle_control.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_control.dir/build.make CMakeFiles/turtle_control.dir/src/turtle_control.cpp.s
 .PHONY : src/turtle_control.cpp.s
 
-src/weather_pub.o: src/weather_pub.cpp.o
-.PHONY : src/weather_pub.o
-
-# target to build an object file
-src/weather_pub.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_pub.dir/build.make CMakeFiles/weather_pub.dir/src/weather_pub.cpp.o
-.PHONY : src/weather_pub.cpp.o
-
-src/weather_pub.i: src/weather_pub.cpp.i
-.PHONY : src/weather_pub.i
-
-# target to preprocess a source file
-src/weather_pub.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_pub.dir/build.make CMakeFiles/weather_pub.dir/src/weather_pub.cpp.i
-.PHONY : src/weather_pub.cpp.i
-
-src/weather_pub.s: src/weather_pub.cpp.s
-.PHONY : src/weather_pub.s
-
-# target to generate assembly for a file
-src/weather_pub.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_pub.dir/build.make CMakeFiles/weather_pub.dir/src/weather_pub.cpp.s
-.PHONY : src/weather_pub.cpp.s
-
-src/weather_sub.o: src/weather_sub.cpp.o
-.PHONY : src/weather_sub.o
-
-# target to build an object file
-src/weather_sub.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_sub.dir/build.make CMakeFiles/weather_sub.dir/src/weather_sub.cpp.o
-.PHONY : src/weather_sub.cpp.o
-
-src/weather_sub.i: src/weather_sub.cpp.i
-.PHONY : src/weather_sub.i
-
-# target to preprocess a source file
-src/weather_sub.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_sub.dir/build.make CMakeFiles/weather_sub.dir/src/weather_sub.cpp.i
-.PHONY : src/weather_sub.cpp.i
-
-src/weather_sub.s: src/weather_sub.cpp.s
-.PHONY : src/weather_sub.s
-
-# target to generate assembly for a file
-src/weather_sub.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_sub.dir/build.make CMakeFiles/weather_sub.dir/src/weather_sub.cpp.s
-.PHONY : src/weather_sub.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -434,30 +249,10 @@ help:
 	@echo "... test"
 	@echo "... ch3_cpp_topic_uninstall"
 	@echo "... uninstall"
-	@echo "... listener"
-	@echo "... talker"
-	@echo "... turtle_circle"
 	@echo "... turtle_control"
-	@echo "... weather_pub"
-	@echo "... weather_sub"
-	@echo "... src/listener.o"
-	@echo "... src/listener.i"
-	@echo "... src/listener.s"
-	@echo "... src/talker.o"
-	@echo "... src/talker.i"
-	@echo "... src/talker.s"
-	@echo "... src/turtle_circle.o"
-	@echo "... src/turtle_circle.i"
-	@echo "... src/turtle_circle.s"
 	@echo "... src/turtle_control.o"
 	@echo "... src/turtle_control.i"
 	@echo "... src/turtle_control.s"
-	@echo "... src/weather_pub.o"
-	@echo "... src/weather_pub.i"
-	@echo "... src/weather_pub.s"
-	@echo "... src/weather_sub.o"
-	@echo "... src/weather_sub.i"
-	@echo "... src/weather_sub.s"
 .PHONY : help
 
 

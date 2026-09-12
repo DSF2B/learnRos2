@@ -1,68 +1,97 @@
-// 巡逻客户端：异步调用 turtle_patrol 服务
-#include <chrono>
-#include <memory>
 #include "rclcpp/rclcpp.hpp"
-#include "ch4_cpp_service/srv/turtle_patrol.hpp"
+#include "ch4_interfaces/srv/patrol.hpp"
+#include <ctime>
+#include "rcl_interfaces/msg/parameter.hpp"
+#include "rcl_interfaces/msg/parameter_value.hpp"
+#include "rcl_interfaces/msg/parameter_type.hpp"
+#include "rcl_interfaces/srv/set_parameters.hpp"
 
-using namespace std::chrono_literals;
-using Patrol = ch4_cpp_service::srv::TurtlePatrol;
+using Patrol = ch4_interfaces::srv::Patrol;
+using SetParam = rcl_interfaces::srv::SetParameters;
 
-class PatrolClient : public rclcpp::Node
+class PatrolClient: public rclcpp::Node
 {
 public:
-  PatrolClient() : Node("patrol_client")
-  {
-    // 巡逻指令做成参数，运行时可覆盖
-    this->declare_parameter<double>("linear_x", 0.5);
-    this->declare_parameter<double>("angular_z", 0.3);
-    this->declare_parameter<double>("duration", 2.0);
+   explicit PatrolClient(const std::string& node_name):Node(node_name){
+      m_patrolClient = this->create_client<Patrol>("patrol");
+      srand(time(NULL));
+      m_timer = this->create_wall_timer(std::chrono::seconds(5),[&]()->void{
+         while(!this->m_patrolClient->wait_for_service(std::chrono::seconds(1))){
+            if(!rclcpp::ok()){
+               RCLCPP_ERROR(this->get_logger(), "等待服务过程中，rclcpp挂了");
+               return ;
+            }
+            RCLCPP_ERROR(this->get_logger(), "等待patrol服务上线");
+         }
 
-    client_ = this->create_client<Patrol>("turtle_patrol");
-  }
-
-  void send_request()
-  {
-    // ① 先等服务器上线（服务可能还没启动，最多等 10s）
-    while (!client_->wait_for_service(1s)) {
-      if (!rclcpp::ok()) {
-        RCLCPP_ERROR(this->get_logger(), "客户端被中断");
-        return;
+         auto request = std::make_shared<Patrol::Request>();
+         request->target_x=rand() % 15;
+         request->target_y=rand() % 15;
+         RCLCPP_INFO(this->get_logger(), "准备好目标点(%f,%f)",
+            request->target_x, request->target_y);
+         this->m_patrolClient->async_send_request(request,[&](rclcpp::Client<Patrol>::SharedFuture responseFuture)->void{
+            auto response = responseFuture.get();
+            if(response->result == Patrol::Response::SUCCESS){
+               RCLCPP_INFO(this->get_logger(), "请求巡逻目标成功");
+            }
+            else{
+               RCLCPP_INFO(this->get_logger(), "请求巡逻目标失败");
+            }
+         });
+      });
+      this->m_paramClient = this->create_client<SetParam>("/turtle_controller/set_parameters");
+   }
+   void update_param_k(double k){
+      auto parameter =  rcl_interfaces::msg::Parameter();
+      parameter.name = "k";
+      auto parameterValue = rcl_interfaces::msg::ParameterValue();
+      parameterValue.type = rcl_interfaces::msg::ParameterType().PARAMETER_DOUBLE;
+      parameterValue.double_value = k;
+      parameter.value = parameterValue;
+      auto request = std::make_shared<SetParam::Request>();
+      request->parameters.push_back(parameter);
+      auto response = this->call_set_parameters(request);
+      if(NULL == response){
+         RCLCPP_INFO(this->get_logger(), "参数更新失败");
       }
-      RCLCPP_INFO(this->get_logger(), "等待服务 turtle_patrol 上线...");
-    }
-
-    // ② 组装请求
-    auto request = std::make_shared<Patrol::Request>();
-    request->linear_x = this->get_parameter("linear_x").as_double();
-    request->angular_z = this->get_parameter("angular_z").as_double();
-    request->duration = this->get_parameter("duration").as_double();
-
-    // ③ 异步调用：不阻塞，应答到达时回调 response_callback
-    RCLCPP_INFO(this->get_logger(), "发送巡逻请求: v=%.2f w=%.2f 时长=%.1fs",
-      request->linear_x, request->angular_z, request->duration);
-    client_->async_send_request(
-      request, std::bind(&PatrolClient::response_callback, this,
-        std::placeholders::_1));
-  }
-
+      for(auto result : response->results){
+         if(result.successful == true){
+            RCLCPP_INFO(this->get_logger(), "参数更新成功");
+         }else{
+            RCLCPP_INFO(this->get_logger(), "参数更新失败，原因%s", result.reason.c_str());
+         }
+      }
+   }
 private:
-  void response_callback(rclcpp::Client<Patrol>::SharedFuture future)
-  {
-    auto response = future.get();
-    RCLCPP_INFO(this->get_logger(), "服务应答: success=%d, %s",
-      response->success, response->message.c_str());
-    rclcpp::shutdown();   // 拿到应答就退出
-  }
+   SetParam::Response::SharedPtr call_set_parameters(SetParam::Request::SharedPtr request){
+      while(!m_paramClient->wait_for_service(std::chrono::seconds(1))){
+         if(!rclcpp::ok()){
+            RCLCPP_ERROR(this->get_logger(), "等待服务过程中，rclcpp挂了");
+            return nullptr;
+         }
+         RCLCPP_ERROR(this->get_logger(), "等待patrol服务上线");
+         
+      }
 
-  rclcpp::Client<Patrol>::SharedPtr client_;
+      auto future = m_paramClient->async_send_request(request);
+      rclcpp::spin_until_future_complete(this->get_node_base_interface(), future);
+      auto response = future.get();
+      return response;
+   }
+
+   
+private:
+   rclcpp::TimerBase::SharedPtr m_timer;
+   rclcpp::Client<Patrol>::SharedPtr m_patrolClient;
+   rclcpp::Client<SetParam>::SharedPtr m_paramClient;
 };
 
-int main(int argc, char ** argv)
+int main(int argc,char **argv)
 {
-  rclcpp::init(argc, argv);
-  auto node = std::make_shared<PatrolClient>();
-  node->send_request();
-  rclcpp::spin(node);
-  rclcpp::shutdown();
-  return 0;
+   rclcpp::init(argc,argv);
+   auto node = std::make_shared<PatrolClient>("patrol_client");
+   node->update_param_k(2.0);
+   rclcpp::spin(node);
+   rclcpp::shutdown();
+   return 0;
 }

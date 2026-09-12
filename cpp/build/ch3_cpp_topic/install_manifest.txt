@@ -1,8 +1,3 @@
-/home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/lib/ch3_cpp_topic/talker
-/home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/lib/ch3_cpp_topic/listener
-/home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/lib/ch3_cpp_topic/weather_pub
-/home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/lib/ch3_cpp_topic/weather_sub
-/home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/lib/ch3_cpp_topic/turtle_circle
 /home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/lib/ch3_cpp_topic/turtle_control
 /home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/share/ament_index/resource_index/package_run_dependencies/ch3_cpp_topic
 /home/zilu/myProgramFile/learnRos2/cpp/install/ch3_cpp_topic/share/ament_index/resource_index/parent_prefix_path/ch3_cpp_topic

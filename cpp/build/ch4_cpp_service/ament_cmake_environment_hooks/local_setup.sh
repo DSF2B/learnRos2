@@ -152,9 +152,7 @@ fi
 
 # list all environment hooks of this package
 ament_append_value AMENT_ENVIRONMENT_HOOKS "$AMENT_CURRENT_PREFIX/share/ch4_cpp_service/environment/ament_prefix_path.sh"
-ament_append_value AMENT_ENVIRONMENT_HOOKS "$AMENT_CURRENT_PREFIX/share/ch4_cpp_service/environment/library_path.sh"
 ament_append_value AMENT_ENVIRONMENT_HOOKS "$AMENT_CURRENT_PREFIX/share/ch4_cpp_service/environment/path.sh"
-ament_append_value AMENT_ENVIRONMENT_HOOKS "$AMENT_CURRENT_PREFIX/share/ch4_cpp_service/environment/pythonpath.sh"
 
 # source all shell-specific environment hooks of this package
 # if not returning them

@@ -1,51 +1,41 @@
-// 静态变换发布者：world -> base_link（固定不动，只发布一次）
-#include <memory>
 #include "rclcpp/rclcpp.hpp"
-#include "tf2_ros/static_transform_broadcaster.h"
-#include "tf2/LinearMath/Quaternion.h"
 #include "geometry_msgs/msg/transform_stamped.hpp"
+#include "tf2/LinearMath/Quaternion.hpp"
+#include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include "tf2_ros/static_transform_broadcaster.hpp"
 
-using namespace std::chrono_literals;
-
-class StaticTfBroadcaster : public rclcpp::Node
+class StaticTFBroadcaster : public rclcpp::Node
 {
 public:
-  StaticTfBroadcaster() : Node("static_tf_broadcaster")
-  {
-    broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
-    publish_static_tf();
-    RCLCPP_INFO(this->get_logger(), "已发布静态变换 world -> base_link");
-  }
-
+   StaticTFBroadcaster():Node("static_tf_broadcaster")
+   {
+      this->m_broadcaster = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
+      this->public_tf();
+   }
 private:
-  void publish_static_tf()
-  {
-    geometry_msgs::msg::TransformStamped t;
-
-    t.header.stamp = this->now();
-    t.header.frame_id = "world";        // 父坐标系
-    t.child_frame_id = "base_link";     // 子坐标系
-
-    // base_link 位于 world 原点上方 0.2m
-    t.transform.translation.x = 0.0;
-    t.transform.translation.y = 0.0;
-    t.transform.translation.z = 0.2;
-    t.transform.rotation.x = 0.0;
-    t.transform.rotation.y = 0.0;
-    t.transform.rotation.z = 0.0;
-    t.transform.rotation.w = 1.0;       // 单位四元数 = 无旋转
-
-    // 静态变换只发布一次，之后由 TF 内部 latching 机制保证新监听者也能收到
-    broadcaster_->sendTransform(t);
-  }
-
-  std::shared_ptr<tf2_ros::StaticTransformBroadcaster> broadcaster_;
+   void public_tf()
+   {
+      geometry_msgs::msg::TransformStamped transform;
+      transform.header.stamp = this->get_clock()->now();
+      transform.header.frame_id = "map";
+      transform.child_frame_id = "target_point";
+      transform.transform.translation.x = 5.0;
+      transform.transform.translation.y = 3.0;
+      transform.transform.translation.z = 0.0;
+      tf2::Quaternion q;
+      q.setRPY(0.0,0.0,50/180.0*M_PI);
+      transform.transform.rotation = tf2::toMsg(q);
+      this->m_broadcaster->sendTransform(transform);
+   }
+private:
+   std::shared_ptr<tf2_ros::StaticTransformBroadcaster> m_broadcaster;
 };
 
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
 {
-  rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<StaticTfBroadcaster>());
-  rclcpp::shutdown();
-  return 0;
+   rclcpp::init(argc,argv);
+   auto node = std::make_shared<StaticTFBroadcaster>();
+   rclcpp::spin(node);
+   rclcpp::shutdown();
+   return 0;
 }

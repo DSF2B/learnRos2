@@ -63,11 +63,6 @@ CMAKE_BINARY_DIR = /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/talker.dir/all
-all: CMakeFiles/listener.dir/all
-all: CMakeFiles/weather_pub.dir/all
-all: CMakeFiles/weather_sub.dir/all
-all: CMakeFiles/turtle_circle.dir/all
 all: CMakeFiles/turtle_control.dir/all
 .PHONY : all
 
@@ -78,11 +73,6 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/ch3_cpp_topic_uninstall.dir/clean
-clean: CMakeFiles/talker.dir/clean
-clean: CMakeFiles/listener.dir/clean
-clean: CMakeFiles/weather_pub.dir/clean
-clean: CMakeFiles/weather_sub.dir/clean
-clean: CMakeFiles/turtle_circle.dir/clean
 clean: CMakeFiles/turtle_control.dir/clean
 .PHONY : clean
 
@@ -139,143 +129,13 @@ CMakeFiles/ch3_cpp_topic_uninstall.dir/clean:
 .PHONY : CMakeFiles/ch3_cpp_topic_uninstall.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/talker.dir
-
-# All Build rule for target.
-CMakeFiles/talker.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/talker.dir/build.make CMakeFiles/talker.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/talker.dir/build.make CMakeFiles/talker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles --progress-num=3,4 "Built target talker"
-.PHONY : CMakeFiles/talker.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/talker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/talker.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 0
-.PHONY : CMakeFiles/talker.dir/rule
-
-# Convenience name for target.
-talker: CMakeFiles/talker.dir/rule
-.PHONY : talker
-
-# clean rule for target.
-CMakeFiles/talker.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/talker.dir/build.make CMakeFiles/talker.dir/clean
-.PHONY : CMakeFiles/talker.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/listener.dir
-
-# All Build rule for target.
-CMakeFiles/listener.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles --progress-num=1,2 "Built target listener"
-.PHONY : CMakeFiles/listener.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/listener.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/listener.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 0
-.PHONY : CMakeFiles/listener.dir/rule
-
-# Convenience name for target.
-listener: CMakeFiles/listener.dir/rule
-.PHONY : listener
-
-# clean rule for target.
-CMakeFiles/listener.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/listener.dir/build.make CMakeFiles/listener.dir/clean
-.PHONY : CMakeFiles/listener.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/weather_pub.dir
-
-# All Build rule for target.
-CMakeFiles/weather_pub.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_pub.dir/build.make CMakeFiles/weather_pub.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_pub.dir/build.make CMakeFiles/weather_pub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles --progress-num=9,10 "Built target weather_pub"
-.PHONY : CMakeFiles/weather_pub.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/weather_pub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/weather_pub.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 0
-.PHONY : CMakeFiles/weather_pub.dir/rule
-
-# Convenience name for target.
-weather_pub: CMakeFiles/weather_pub.dir/rule
-.PHONY : weather_pub
-
-# clean rule for target.
-CMakeFiles/weather_pub.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_pub.dir/build.make CMakeFiles/weather_pub.dir/clean
-.PHONY : CMakeFiles/weather_pub.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/weather_sub.dir
-
-# All Build rule for target.
-CMakeFiles/weather_sub.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_sub.dir/build.make CMakeFiles/weather_sub.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_sub.dir/build.make CMakeFiles/weather_sub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles --progress-num=11,12 "Built target weather_sub"
-.PHONY : CMakeFiles/weather_sub.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/weather_sub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/weather_sub.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 0
-.PHONY : CMakeFiles/weather_sub.dir/rule
-
-# Convenience name for target.
-weather_sub: CMakeFiles/weather_sub.dir/rule
-.PHONY : weather_sub
-
-# clean rule for target.
-CMakeFiles/weather_sub.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/weather_sub.dir/build.make CMakeFiles/weather_sub.dir/clean
-.PHONY : CMakeFiles/weather_sub.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/turtle_circle.dir
-
-# All Build rule for target.
-CMakeFiles/turtle_circle.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_circle.dir/build.make CMakeFiles/turtle_circle.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_circle.dir/build.make CMakeFiles/turtle_circle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles --progress-num=5,6 "Built target turtle_circle"
-.PHONY : CMakeFiles/turtle_circle.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/turtle_circle.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/turtle_circle.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles 0
-.PHONY : CMakeFiles/turtle_circle.dir/rule
-
-# Convenience name for target.
-turtle_circle: CMakeFiles/turtle_circle.dir/rule
-.PHONY : turtle_circle
-
-# clean rule for target.
-CMakeFiles/turtle_circle.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_circle.dir/build.make CMakeFiles/turtle_circle.dir/clean
-.PHONY : CMakeFiles/turtle_circle.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/turtle_control.dir
 
 # All Build rule for target.
 CMakeFiles/turtle_control.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_control.dir/build.make CMakeFiles/turtle_control.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtle_control.dir/build.make CMakeFiles/turtle_control.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles --progress-num=7,8 "Built target turtle_control"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zilu/myProgramFile/learnRos2/cpp/build/ch3_cpp_topic/CMakeFiles --progress-num=1,2 "Built target turtle_control"
 .PHONY : CMakeFiles/turtle_control.dir/all
 
 # Build rule for subdir invocation for target.
