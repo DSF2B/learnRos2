@@ -4,6 +4,7 @@
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include "tf2_ros/transform_broadcaster.hpp"
 #include <chrono>
+#include <cmath>
 
 using namespace std::chrono_literals;
 
@@ -22,11 +23,11 @@ private:
       transform.header.stamp = this->get_clock()->now();
       transform.header.frame_id = "map";
       transform.child_frame_id = "base_link";
-      transform.transform.translation.x = 5.0;
+      transform.transform.translation.x = 5.0 + 2.0 * std::sin(this->now().seconds());
       transform.transform.translation.y = 3.0;
       transform.transform.translation.z = 0.0;
       tf2::Quaternion q;
-      q.setRPY(0.0,0.0,50/180.0*M_PI);
+      q.setRPY(0.0,0.0,0.0);
       transform.transform.rotation = tf2::toMsg(q);
       this->m_broadcaster->sendTransform(transform);
    }

@@ -4,3 +4,5 @@ ch3_status_interfaces.egg-info/PKG-INFO
 ch3_status_interfaces.egg-info/SOURCES.txt
 ch3_status_interfaces.egg-info/dependency_links.txt
 ch3_status_interfaces.egg-info/top_level.txt
+ch3_status_interfaces/msg/__init__.py
+ch3_status_interfaces/msg/_system_status.py

@@ -1,0 +1,10 @@
+/partol_node:
+  ros__parameters:
+    init_point: [0.0, 0.0, 0.0]
+    target_points: [
+      0.0, 0.0, 0.0,
+      1.0, 2.0, 3.14,
+      3.0, 1.0, 1.57,
+      -3.0, -0.5, 1.57,
+      1.0, -2.0, 1.57]
+    use_sim_time: false
